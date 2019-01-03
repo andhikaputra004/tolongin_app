@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/til_nama"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:id="@+id/et_nama"
+                  android:inputType="text"
+                  android:hint="@string/txt_nama_donatur"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/til_telephone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_nama"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:inputType="number"
+                  android:id="@+id/et_telp"
+                  android:hint="@string/txt_telepone"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp"
+            android:id="@+id/btn_register"
+            android:background="@drawable/rounded_button"
+            android:text="@string/txt_Register"
+            app:layout_constraintTop_toBottomOf="@id/til_telephone"
+            app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+</android.support.constraint.ConstraintLayout>

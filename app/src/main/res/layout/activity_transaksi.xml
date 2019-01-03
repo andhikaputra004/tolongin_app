@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:background="@color/grey"
+                                             android:layout_height="match_parent">
+
+    <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="fill_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.CardView
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:layout_marginBottom="@dimen/dimen_24dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/tv_nominal"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toTopOf="parent"
+                      android:layout_marginTop="@dimen/dimen_24dp"
+                      android:layout_marginLeft="@dimen/dimen_24dp"
+                      android:text="@string/txt_nominal"/>
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_marginLeft="@dimen/dimen_24dp"
+                    android:layout_marginRight="@dimen/dimen_24dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/cl_nominal"
+                    android:background="@drawable/rectangle"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_nominal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintTop_toTopOf="parent"
+                          android:text="@string/txt_rp"
+                          android:id="@+id/tv_rp"
+                          android:layout_marginLeft="@dimen/dimen_24dp"
+                          app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <EditText android:layout_width="@dimen/dimen_0dp"
+                          android:layout_height="24dp"
+                          android:inputType="numberDecimal"
+                          android:id="@+id/et_nominal"
+                          android:background="@android:color/transparent"
+                          app:layout_constraintLeft_toRightOf="@+id/tv_rp"
+                          android:layout_marginLeft="@dimen/dimen_10dp"
+                          app:layout_constraintRight_toRightOf="parent"
+                          android:layout_marginRight="@dimen/dimen_24dp"
+                          app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Pilih metode Pembayaran"
+                      android:id="@+id/tv_metode_bayar"
+                      android:layout_marginLeft="@dimen/dimen_24dp"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      android:layout_marginTop="@dimen/dimen_10dp"
+                      app:layout_constraintTop_toBottomOf="@id/cl_nominal"/>
+            <RadioGroup android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_metode_bayar"
+                        android:layout_marginLeft="@dimen/dimen_24dp"
+                        android:layout_marginRight="@dimen/dimen_24dp"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_marginBottom="@dimen/dimen_10dp"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/cl_bni"
+                        android:background="@drawable/rectangle"
+                        android:layout_height="@dimen/dimen_50dp">
+
+                    <RadioButton android:layout_width="wrap_content"
+                                 android:layout_height="@dimen/dimen_24dp"
+                                 android:scaleX="0.5"
+                                 android:id="@+id/rb_bank_bni"
+                                 android:scaleY="0.5"
+                                 app:layout_constraintLeft_toLeftOf="parent"
+                                 app:layout_constraintTop_toTopOf="parent"
+                                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:layout_constraintLeft_toRightOf="@id/rb_bank_bni"
+                              app:layout_constraintTop_toTopOf="parent"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              android:text="@string/txt_bni"/>
+
+                    <ImageView android:layout_width="50dp"
+                               android:layout_height="@dimen/dimen_20dp"
+                               android:id="@+id/iv_bank_bni"
+                               app:srcCompat="@drawable/ic_bni"
+                               app:layout_constraintRight_toRightOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               app:layout_constraintBottom_toBottomOf="parent"
+                               android:layout_marginRight="@dimen/dimen_24dp"/>
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/cl_mandiri"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:background="@drawable/rectangle"
+                        android:layout_height="@dimen/dimen_50dp">
+
+                    <RadioButton android:layout_width="wrap_content"
+                                 android:layout_height="@dimen/dimen_24dp"
+                                 android:scaleX="0.5"
+                                 android:id="@+id/rb_bank_mandiri"
+                                 android:scaleY="0.5"
+                                 app:layout_constraintLeft_toLeftOf="parent"
+                                 app:layout_constraintTop_toTopOf="parent"
+                                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:layout_constraintLeft_toRightOf="@id/rb_bank_mandiri"
+                              app:layout_constraintTop_toTopOf="parent"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              android:text="@string/txt_mandiri"/>
+
+                    <ImageView android:layout_width="50dp"
+                               android:layout_height="@dimen/dimen_20dp"
+                               android:id="@+id/iv_bank_mandiri"
+                               app:srcCompat="@drawable/ic_mandiri"
+                               app:layout_constraintRight_toRightOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               app:layout_constraintBottom_toBottomOf="parent"
+                               android:layout_marginRight="@dimen/dimen_24dp"/>
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/cl_bri"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:background="@drawable/rectangle"
+                        android:layout_height="@dimen/dimen_50dp">
+
+                    <RadioButton android:layout_width="wrap_content"
+                                 android:layout_height="@dimen/dimen_24dp"
+                                 android:scaleX="0.5"
+                                 android:id="@+id/rb_bank_bri"
+                                 android:scaleY="0.5"
+                                 app:layout_constraintLeft_toLeftOf="parent"
+                                 app:layout_constraintTop_toTopOf="parent"
+                                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:layout_constraintLeft_toRightOf="@id/rb_bank_bri"
+                              app:layout_constraintTop_toTopOf="parent"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              android:text="@string/txt_bri"/>
+
+                    <ImageView android:layout_width="50dp"
+                               android:layout_height="@dimen/dimen_20dp"
+                               android:id="@+id/iv_bank_bri"
+                               app:srcCompat="@drawable/ic_bri"
+                               app:layout_constraintRight_toRightOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               app:layout_constraintBottom_toBottomOf="parent"
+                               android:layout_marginRight="@dimen/dimen_24dp"/>
+                </android.support.constraint.ConstraintLayout>
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/cl_bca"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:background="@drawable/rectangle"
+                        android:layout_height="@dimen/dimen_50dp">
+
+                    <RadioButton android:layout_width="wrap_content"
+                                 android:layout_height="@dimen/dimen_24dp"
+                                 android:scaleX="0.5"
+                                 android:id="@+id/rb_bank_bca"
+                                 android:scaleY="0.5"
+                                 app:layout_constraintLeft_toLeftOf="parent"
+                                 app:layout_constraintTop_toTopOf="parent"
+                                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:layout_constraintLeft_toRightOf="@id/rb_bank_bca"
+                              app:layout_constraintTop_toTopOf="parent"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              android:text="@string/txt_bca"/>
+
+                    <ImageView android:layout_width="50dp"
+                               android:layout_height="@dimen/dimen_20dp"
+                               android:id="@+id/iv_bank_bca"
+                               app:srcCompat="@drawable/ic_bca"
+                               app:layout_constraintRight_toRightOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               app:layout_constraintBottom_toBottomOf="parent"
+                               android:layout_marginRight="@dimen/dimen_24dp"/>
+                </android.support.constraint.ConstraintLayout>
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/cl_cimb"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:background="@drawable/rectangle"
+                        android:layout_height="@dimen/dimen_50dp">
+
+                    <RadioButton android:layout_width="wrap_content"
+                                 android:layout_height="@dimen/dimen_24dp"
+                                 android:scaleX="0.5"
+                                 android:id="@+id/rb_bank_cimb"
+                                 android:scaleY="0.5"
+                                 app:layout_constraintLeft_toLeftOf="parent"
+                                 app:layout_constraintTop_toTopOf="parent"
+                                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:layout_constraintLeft_toRightOf="@id/rb_bank_cimb"
+                              app:layout_constraintTop_toTopOf="parent"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              android:text="@string/txt_cimb_niaga"/>
+
+                    <ImageView android:layout_width="50dp"
+                               android:layout_height="@dimen/dimen_20dp"
+                               android:id="@+id/iv_bank_cimb"
+                               app:srcCompat="@drawable/ic_cimb"
+                               app:layout_constraintRight_toRightOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               app:layout_constraintBottom_toBottomOf="parent"
+                               android:layout_marginRight="@dimen/dimen_24dp"/>
+
+                </android.support.constraint.ConstraintLayout>
+            </RadioGroup>
+            <Button android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/txt_donasi"
+                    android:id="@+id/btn_donasi"
+                    android:background="@color/pink"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>
