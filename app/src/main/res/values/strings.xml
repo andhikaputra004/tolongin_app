@@ -33,6 +33,6 @@
     <string name="txt_silahkan_transfer_tepat_sebesar">Silahkan transfer tepat sebesar :</string>
     <string name="txt_pembayaran_dapat_dilakukan_ke_rekening">Pembayaran dapat dilakukan ke rekening</string>
     <string name="txt_new_password">New Password</string>
-    <string name="txt_change_password">Change Password</string>
     <string name="title_activity_main3">Main3Activity</string>
+    <string name="txt_change_password">Change Password</string>
 </resources>

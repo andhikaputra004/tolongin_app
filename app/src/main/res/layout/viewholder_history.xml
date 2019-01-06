@@ -17,5 +17,8 @@
               android:id="@+id/tv_rp"
               app:layout_constraintTop_toBottomOf="@+id/tv_bencana"/>
 
+    <TextView android:layout_width="@dimen/dimen_0dp"
+              android:layout_height="wrap_content"
+              android:id="@+id/tv_status"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -22,7 +22,6 @@ class DetilTransaksiActivity : BaseActivity() {
 
     override fun onViewReady() {
         val bundle = intent.extras
-        Log.d("DHIKA_TESt", "res:${bundle.getString("nominal")} ")
         tv_tranfer_content.text = bundle.getString("nominal")
         btn_getimage.setOnClickListener {
             getImage()

@@ -9,6 +9,7 @@ import com.example.andhika.tolonginapp.R
 import com.example.andhika.tolonginapp.deps.SharedPreferenceHelper
 import com.example.andhika.tolonginapp.section.gantipassword.ChangePasswordActivity
 import com.example.andhika.tolonginapp.section.login.LoginActivity
+import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 import javax.inject.Inject
@@ -23,6 +24,7 @@ class ProfileFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tv_name.text = sharedPreferenceHelper.getString(NAMA_PENGGUNA)
         btn_logout.setOnClickListener {
 //            sharedPreferenceHelper.removeSession()
             startActivity(Intent(activity,ChangePasswordActivity::class.java))
