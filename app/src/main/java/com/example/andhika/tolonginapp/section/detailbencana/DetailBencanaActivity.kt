@@ -9,6 +9,8 @@ import com.example.andhika.tolonginapp.section.transaksi.TransaksiActivity
 import com.example.andhika.tolonginapp.utils.Constant.BaseUrl.Companion.BASE_URL
 import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.BENCANA
 import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.ID_BENCANA
+import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.NOMOR_REK
+import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.REK
 import kotlinx.android.synthetic.main.activity_detail_bencana.*
 import javax.inject.Inject
 
@@ -31,6 +33,7 @@ class DetailBencanaActivity : BaseActivity() {
 
         btn_transaksi.setOnClickListener {
             sharedPreferenceHelper.setString(BENCANA,bundle.getString(ID_BENCANA))
+            sharedPreferenceHelper.setString(REK,bundle.getString(NOMOR_REK))
             startActivity(Intent(this@DetailBencanaActivity, TransaksiActivity::class.java))
         }
     }

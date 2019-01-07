@@ -15,6 +15,7 @@ import com.example.andhika.tolonginapp.model.TransaksiRequest
 import com.example.andhika.tolonginapp.model.TransaksiResponse
 import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.BENCANA
 import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.ID_PENGGUNA
+import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.REK
 import kotlinx.android.synthetic.main.activity_detil_transaksi.*
 import java.io.File
 import javax.inject.Inject
@@ -34,9 +35,12 @@ class DetilTransaksiActivity : BaseActivity(), DetilTransaksiContract.View {
     }
 
     override fun onViewReady() {
+        presenter.takeView(this)
+        lifecycle.addObserver(presenter)
         val bundle = intent.extras
         val getNumberR = getNumber()
         tv_tranfer_content.text = "${bundle.getString("nominal").toInt() + getNumberR}"
+        tv_no_rek.text = sharedPreferenceHelper.getString(REK)
         btn_getimage.setOnClickListener {
             getImage()
         }

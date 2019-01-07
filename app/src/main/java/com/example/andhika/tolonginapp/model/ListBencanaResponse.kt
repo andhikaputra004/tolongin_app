@@ -2,7 +2,6 @@ package com.example.andhika.tolonginapp.model
 
 import com.google.gson.annotations.SerializedName
 
-
 data class ListBencanaResponse(
     @SerializedName("listbencana")
     val listbencana: List<Listbencana>?,
@@ -17,8 +16,12 @@ data class Listbencana(
     val idBencana: String?,
     @SerializedName("judul_bencana")
     val judulBencana: String?,
+    @SerializedName("nama_penggalangdana")
+    val namaPenggalangdana: String?,
+    @SerializedName("nomer_rekening")
+    val nomerRekening: String?,
     @SerializedName("total_donasi")
-    val totalDonasi: String?,
+    val totalDonasi: Double?,
     @SerializedName("tumnel")
     val tumnel: String?
 )

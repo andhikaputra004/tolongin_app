@@ -14,6 +14,8 @@ class Constant{
             const val EMPTY_STRING = ""
             const val ID_BENCANA = "ID_BENCANA"
             const val BENCANA = "BENCANA"
+            const val NOMOR_REK = "NO_REK"
+            const val REK = "REK"
 
         }
     }

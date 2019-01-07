@@ -15,6 +15,7 @@ import com.example.andhika.tolonginapp.model.Listbencana
 import com.example.andhika.tolonginapp.section.detailbencana.DetailBencanaActivity
 import com.example.andhika.tolonginapp.utils.Constant.BaseUrl.Companion.BASE_URL
 import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.ID_BENCANA
+import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.NOMOR_REK
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.viewholder_bencana.view.*
@@ -32,9 +33,10 @@ class HomeFragment : DaggerFragment(), HomeContract.View {
             bundle.apply {
                 putString("IMAGE_HOLDER",model.tumnel)
                 putString("BENCANA",model.judulBencana)
-                putString("DONASI",model.totalDonasi)
+                putString("DONASI",model.totalDonasi.toString())
                 putString(ID_BENCANA,model.idBencana)
                 putString("DESCRIPTION",model.deskripsiBencana)
+                putString(NOMOR_REK,model.nomerRekening)
             }
             startActivity(Intent(activity, DetailBencanaActivity::class.java).apply {
                 putExtras(bundle)
@@ -45,7 +47,7 @@ class HomeFragment : DaggerFragment(), HomeContract.View {
                     view.iv_tumbnail
                 )
             view.judul_bencana.text = model.judulBencana
-            view.tv_donation.text = model.totalDonasi
+            view.tv_donation.text = model.totalDonasi.toString()
 
         })
     }
