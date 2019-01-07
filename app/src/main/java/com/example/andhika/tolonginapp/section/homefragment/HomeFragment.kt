@@ -14,6 +14,7 @@ import com.example.andhika.tolonginapp.model.ListBencanaResponse
 import com.example.andhika.tolonginapp.model.Listbencana
 import com.example.andhika.tolonginapp.section.detailbencana.DetailBencanaActivity
 import com.example.andhika.tolonginapp.utils.Constant.BaseUrl.Companion.BASE_URL
+import com.example.andhika.tolonginapp.utils.Constant.CommonString.Companion.ID_BENCANA
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.viewholder_bencana.view.*
@@ -32,6 +33,7 @@ class HomeFragment : DaggerFragment(), HomeContract.View {
                 putString("IMAGE_HOLDER",model.tumnel)
                 putString("BENCANA",model.judulBencana)
                 putString("DONASI",model.totalDonasi)
+                putString(ID_BENCANA,model.idBencana)
                 putString("DESCRIPTION",model.deskripsiBencana)
             }
             startActivity(Intent(activity, DetailBencanaActivity::class.java).apply {

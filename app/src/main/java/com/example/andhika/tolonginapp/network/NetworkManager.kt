@@ -38,4 +38,10 @@ class NetworkManager(val networkService: NetworkService){
         .getHistory(request)
         .uisubscribe(onNext, onError)
 
+
+    fun doTransaksi(request: TransaksiRequest,
+                     onNext: (TransaksiResponse) -> Unit,
+                     onError: (Throwable) -> Unit) = networkService
+        .doTransaksi(request)
+        .uisubscribe(onNext, onError)
 }

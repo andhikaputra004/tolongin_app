@@ -22,4 +22,7 @@ interface NetworkService {
 
     @POST("getHistory")
     fun getHistory(@Body request: HistoryRequest) : Observable<HistoryResponse>
+
+    @POST("do_transaksi")
+    fun doTransaksi(@Body request: TransaksiRequest) : Observable<TransaksiResponse>
 }
