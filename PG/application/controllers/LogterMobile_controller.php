@@ -42,27 +42,26 @@ class LogterMobile_controller extends CI_Controller {
   public function RegisterDonatur()
   {
     $input = json_decode(file_get_contents('php://input'),true);
-    if($this->Mobilelogin_model->cekEmail($input['email']))
-    {
+    // if($this->Mobilelogin_model->cekEmail($input['email']))
+    // {
       $this->Mobilelogin_model->insertPengguna($input);
 
-      $response=array(
-        'success'=>true,
-        'message'=>'registrasi berhasil',
-        'email'=>$input['email']
-      );
-    }
-    else {
-      $response=array(
-        'success'=>false,
-        'message'=>'id pengguna sudah terdaftar'
-      );
-    }
+    //   $response=array(
+    //     'success'=>true,
+    //     'message'=>'registrasi berhasil'
+    //   );
+    // // }
+    // // else {
+    //   // $response=array(
+    //     // 'success'=>false,
+    //     // 'message'=>'id pengguna sudah terdaftar'
+    //   // );
+    // // }
 
     $this->output
     ->set_status_header(200)
     ->set_content_type('application/json', 'utf-8')
-    ->set_output(json_encode($response, JSON_PRETTY_PRINT))
+    ->set_output(json_encode($input, JSON_PRETTY_PRINT))
     ->_display();
     exit;
   }
@@ -71,21 +70,21 @@ class LogterMobile_controller extends CI_Controller {
   public function RegisterPengguna()
   {
     $input = json_decode(file_get_contents('php://input'),true);
-    if($this->Mobilelogin_mobile->cekEmail($input['email']))
+    if($this->Mobilelogin_mobile->zcekPengguna($input))
     {
       $this->Mobilelogin_mobile->insertPengguna($DataPelanggan);
-      $Pelanggan=$this->Mobilelogin_mobile->getDataPelanggan($DataPelanggan);
+      // $Pelanggan=$this->Mobilelogin_mobile->getDataPelanggan($DataPelanggan);
 
       $response=array(
         'success'=>true,
-        'message'=>'registrasi berhasil',
-        'datapelanggan'=>$Pelanggan
+        'message'=>'registrasi berhasil'
+        // 'datapelanggan'=>$Pelanggan
       );
     }
     else {
       $response=array(
-        'success'=>false,
-        'message'=>$Pelanggan
+        'success'=>false
+        // 'message'=>$Pelanggan
       );
     }
 

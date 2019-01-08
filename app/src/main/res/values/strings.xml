@@ -29,11 +29,14 @@
     <string name="txt_bri">BRI</string>
     <string name="txt_bca">BCA</string>
     <string name="txt_cimb_niaga">Cimb Niaga</string>
-    <string name="txt_donasi">Donasi</string>
     <string name="txt_silahkan_transfer_tepat_sebesar">Silahkan transfer tepat sebesar :</string>
     <string name="txt_pembayaran_dapat_dilakukan_ke_rekening">Pembayaran dapat dilakukan ke rekening</string>
     <string name="txt_new_password">New Password</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="txt_change_password">Change Password</string>
     <string name="txt_transaksi">Transaksi</string>
+    <string name="txt_donasi">Donasi</string>
+    <string name="txt_detail_transaksi">Detail Transaksi</string>
+    <string name="txt_don_t_have_an_account_sign_up">Don\'t have an account? %1$s</string>
+    <string name="txt_sign_up">Sign Up</string>
 </resources>

@@ -63,7 +63,7 @@ class Mobilelogin_model extends CI_Model {
     $this->db->select('*');
     $this->db->from('tbl_pengguna');
     $this->db->where('nama',$input['nama']);
-    $data = $this->db->get('')->row_array();
+    // $data = $this->db->get('')->row_array();
     $num_rows=$this->db->count_all_results('');
     if($num_rows==0)
     {
@@ -102,13 +102,12 @@ class Mobilelogin_model extends CI_Model {
     $this->db->update('tbl_pengguna',$DataPengguna);
   }
 
+
   
   public function insertPengguna($input)
   {    
-    
-    $this->db->set('status','1');
-    $this->db->set('id_role','3');
-    $this->db->insert('tbl_pengguna',$input);
+    echo $input;
+   // $this->db->insert('tbl_pengguna',$input);
   }
 
   // public function getIdDonatur()

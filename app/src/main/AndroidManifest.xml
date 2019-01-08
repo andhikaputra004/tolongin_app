@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.andhika.tolonginapp">
+          package="com.example.tolonginapp.tolongin">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-            android:name=".TolonginApp"
+            android:name="com.example.tolonginapp.tolongin.TolonginApp"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -26,9 +26,9 @@
         </provider>
 
         <activity
-                android:name=".section.login.LoginActivity"
+                android:name="com.example.tolonginapp.tolongin.section.login.LoginActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar"
+                android:theme="@style/AppTheme.Color"
                 android:windowSoftInputMode="adjustResize">
 
              <intent-filter>
@@ -39,9 +39,9 @@
              </intent-filter>
         </activity>
         <activity
-                android:name=".section.register.RegisterActivity"
+                android:name="com.example.tolonginapp.tolongin.section.register.RegisterActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar"
+                android:theme="@style/AppTheme.Color"
                 android:windowSoftInputMode="adjustResize">
 
             <!-- <intent-filter> -->
@@ -52,10 +52,10 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-                android:name=".MainActivity"
+                android:name="com.example.tolonginapp.tolongin.MainActivity"
                 android:label="@string/title_activity_main"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar"
+                android:theme="@style/AppTheme.Color"
                 android:windowSoftInputMode="adjustResize">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN"/>-->
@@ -64,9 +64,9 @@
             <!--</intent-filter>-->
         </activity>
         <activity
-                android:name=".section.detailbencana.DetailBencanaActivity"
+                android:name="com.example.tolonginapp.tolongin.section.detailbencana.DetailBencanaActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar"
+                android:theme="@style/AppTheme.Color"
                 android:windowSoftInputMode="adjustResize">
 
             <!-- <intent-filter> -->
@@ -77,9 +77,9 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-                android:name=".section.transaksi.TransaksiActivity"
+                android:name="com.example.tolonginapp.tolongin.section.transaksi.TransaksiActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:theme="@style/AppTheme.Color">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN"/> -->
@@ -89,7 +89,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-                android:name=".section.detiltransaksi.DetilTransaksiActivity"
+                android:name="com.example.tolonginapp.tolongin.section.detiltransaksi.DetilTransaksiActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
 
@@ -100,9 +100,9 @@
 
         </activity>
         <activity
-                android:name=".section.gantipassword.ChangePasswordActivity"
+                android:name="com.example.tolonginapp.tolongin.section.gantipassword.ChangePasswordActivity"
                 android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:theme="@style/AppTheme.Color">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN"/> -->

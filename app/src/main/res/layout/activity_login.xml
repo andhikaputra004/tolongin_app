@@ -69,7 +69,7 @@
             android:layout_marginLeft="@dimen/dimen_24dp"
             android:layout_marginRight="@dimen/dimen_24dp"
             android:layout_marginTop="10dp"
-            android:text="Don't have an account? Sign Up"
+            android:text="@string/txt_don_t_have_an_account_sign_up"
             android:textAlignment="center"/>
 
 </android.support.constraint.ConstraintLayout>
