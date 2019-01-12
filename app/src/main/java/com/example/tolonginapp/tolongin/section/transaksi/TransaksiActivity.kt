@@ -10,9 +10,10 @@ import kotlinx.android.synthetic.main.activity_transaksi.*
 
 class TransaksiActivity : BaseActivity() {
 
+
     override fun onSetupLayout() {
         setContentView(R.layout.activity_transaksi)
-        setupToolbarTitle(toolbar as Toolbar, R.string.txt_transaksi,R.drawable.ic_arrow_back_white_24dp)
+        setupToolbarTitle(toolbar as Toolbar, R.string.txt_transaksi, R.drawable.ic_arrow_back_white_24dp)
 
     }
 
@@ -20,8 +21,8 @@ class TransaksiActivity : BaseActivity() {
         val bundle = Bundle()
 
         rb_bank_mandiri.setOnCheckedChangeListener { buttonView, isChecked ->
-            when{
-                buttonView.isChecked ->{
+            when {
+                buttonView.isChecked -> {
                     rb_bank_bni.isChecked = false
                     rb_bank_bri.isChecked = false
                     rb_bank_cimb.isChecked = false
@@ -30,8 +31,8 @@ class TransaksiActivity : BaseActivity() {
             }
         }
         rb_bank_bca.setOnCheckedChangeListener { buttonView, isChecked ->
-            when{
-                buttonView.isChecked ->{
+            when {
+                buttonView.isChecked -> {
                     rb_bank_bni.isChecked = false
                     rb_bank_bri.isChecked = false
                     rb_bank_cimb.isChecked = false
@@ -40,8 +41,8 @@ class TransaksiActivity : BaseActivity() {
             }
         }
         rb_bank_cimb.setOnCheckedChangeListener { buttonView, isChecked ->
-            when{
-                buttonView.isChecked ->{
+            when {
+                buttonView.isChecked -> {
                     rb_bank_bni.isChecked = false
                     rb_bank_bri.isChecked = false
                     rb_bank_mandiri.isChecked = false
@@ -50,8 +51,8 @@ class TransaksiActivity : BaseActivity() {
             }
         }
         rb_bank_bri.setOnCheckedChangeListener { buttonView, isChecked ->
-            when{
-                buttonView.isChecked ->{
+            when {
+                buttonView.isChecked -> {
                     rb_bank_bni.isChecked = false
                     rb_bank_cimb.isChecked = false
                     rb_bank_mandiri.isChecked = false
@@ -61,8 +62,8 @@ class TransaksiActivity : BaseActivity() {
         }
 
         rb_bank_bni.setOnCheckedChangeListener { buttonView, isChecked ->
-            when{
-                buttonView.isChecked ->{
+            when {
+                buttonView.isChecked -> {
                     rb_bank_bri.isChecked = false
                     rb_bank_cimb.isChecked = false
                     rb_bank_mandiri.isChecked = false

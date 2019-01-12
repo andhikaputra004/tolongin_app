@@ -3,6 +3,7 @@ package com.example.tolonginapp.tolongin.section.homefragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +13,18 @@ import com.example.tolonginapp.tolongin.common.GeneralRecyclerViewAdapter
 import com.example.tolonginapp.tolongin.model.ListBencanaResponse
 import com.example.tolonginapp.tolongin.model.Listbencana
 import com.example.tolonginapp.tolongin.section.detailbencana.DetailBencanaActivity
+import com.example.tolonginapp.tolongin.utils.Constant
 import com.example.tolonginapp.tolongin.utils.Constant.BaseUrl.Companion.BASE_URL
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.COUNTRY
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_BENCANA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LANGUANGE
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
+import com.example.tolonginapp.tolongin.utils.setCurrency
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.viewholder_bencana.view.*
+import java.text.NumberFormat
+import java.util.*
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment(), HomeContract.View {
@@ -32,7 +39,7 @@ class HomeFragment : DaggerFragment(), HomeContract.View {
             bundle.apply {
                 putString("IMAGE_HOLDER",model.tumnel)
                 putString("BENCANA",model.judulBencana)
-                putString("DONASI",model.totalDonasi.toString())
+                model.totalDonasi?.let { putDouble("DONASI", it) }
                 putString(ID_BENCANA,model.idBencana)
                 putString("DESCRIPTION",model.deskripsiBencana)
                 putString(NOMOR_REK,model.nomerRekening)
@@ -46,7 +53,7 @@ class HomeFragment : DaggerFragment(), HomeContract.View {
                     view.iv_tumbnail
                 )
             view.judul_bencana.text = model.judulBencana
-            view.tv_donation.text = model.totalDonasi.toString()
+            view.tv_donation.text = model.totalDonasi?.let { setCurrency(it) }
 
         })
     }

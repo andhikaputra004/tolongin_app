@@ -5,6 +5,7 @@ import com.example.tolonginapp.tolongin.deps.ActivityScoped
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.model.LoginRequest
 import com.example.tolonginapp.tolongin.network.NetworkManager
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.EMAIL_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
 import io.reactivex.Observable
@@ -26,12 +27,16 @@ class LoginPresenter @Inject constructor(val networkManager: NetworkManager,val 
                     it.datapengguna?.let { data ->
                         sharedPreferenceHelper.setString(ID_PENGGUNA, data.idPengguna)
                         sharedPreferenceHelper.setString(NAMA_PENGGUNA, data.nama)
+                        sharedPreferenceHelper.setString(EMAIL_PENGGUNA,data.email)
                     }
                     view?.goToMain(it)
                 }
+                it.success == false ->{
+                    it.message?.let { it1 -> view?.showError(it1) }
+                }
             }
         }, {
-
+            view?.showError(it)
         }))
     }
 

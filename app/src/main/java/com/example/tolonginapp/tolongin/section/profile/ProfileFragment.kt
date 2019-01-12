@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.section.gantipassword.ChangePasswordActivity
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.EMAIL_PENGGUNA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LOGGED
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -24,9 +26,13 @@ class ProfileFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tv_name.text = sharedPreferenceHelper.getString(NAMA_PENGGUNA)
-        btn_logout.setOnClickListener {
-//            sharedPreferenceHelper.removeSession()
+        tv_email.text = sharedPreferenceHelper.getString(EMAIL_PENGGUNA)
+        btn_change_password.setOnClickListener {
             startActivity(Intent(activity,ChangePasswordActivity::class.java))
+        }
+        btn_logout.setOnClickListener {
+            sharedPreferenceHelper.removeSession()
+            activity?.finish()
         }
     }
 }

@@ -1,7 +1,9 @@
 package com.example.tolonginapp.tolongin.deps
 
 import android.content.SharedPreferences
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.EMAIL_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LOGGED
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
 
 class SharedPreferenceHelper(val sharedPreference: SharedPreferences){
@@ -32,6 +34,8 @@ class SharedPreferenceHelper(val sharedPreference: SharedPreferences){
     fun removeSession() {
         setString(ID_PENGGUNA, "")
         setString(NAMA_PENGGUNA, "")
+        setString(EMAIL_PENGGUNA,"")
+        setBoolean(LOGGED,false)
     }
 
 }

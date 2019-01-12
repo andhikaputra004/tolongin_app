@@ -7,12 +7,16 @@ import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.base.BaseActivity
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.section.transaksi.TransaksiActivity
+import com.example.tolonginapp.tolongin.utils.Constant
 import com.example.tolonginapp.tolongin.utils.Constant.BaseUrl.Companion.BASE_URL
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.REK
+import com.example.tolonginapp.tolongin.utils.setCurrency
 import kotlinx.android.synthetic.main.activity_detail_bencana.*
+import java.text.NumberFormat
+import java.util.*
 import javax.inject.Inject
 
 class DetailBencanaActivity : BaseActivity() {
@@ -20,6 +24,8 @@ class DetailBencanaActivity : BaseActivity() {
 
     @Inject
     lateinit var sharedPreferenceHelper: SharedPreferenceHelper
+
+
     override fun onSetupLayout() {
         setContentView(R.layout.activity_detail_bencana)
         setupToolbarTitle(toolbar as Toolbar , R.string.txt_donasi,R.drawable.ic_arrow_back_white_24dp)
@@ -30,7 +36,7 @@ class DetailBencanaActivity : BaseActivity() {
         Glide.with(this).load("${BASE_URL}images/Bencana/${bundle.getString("IMAGE_HOLDER")}")
             .into(iv_thumbnail)
         tv_bencana.text = bundle.getString("BENCANA")
-        tv_donation_money.text = bundle.getString("DONASI")
+        tv_donation_money.text = setCurrency(bundle.getDouble("DONASI"))
         tv_descripsion.text = bundle.getString("DESCRIPTION")
 
         btn_transaksi.setOnClickListener {

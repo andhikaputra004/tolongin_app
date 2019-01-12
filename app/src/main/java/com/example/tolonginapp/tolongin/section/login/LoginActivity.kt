@@ -8,14 +8,19 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.view.View
 import com.example.tolonginapp.tolongin.MainActivity
 import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.base.BaseActivity
+import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.ext.getColorCompat
 import com.example.tolonginapp.tolongin.model.LoginRequest
 import com.example.tolonginapp.tolongin.model.LoginResponse
 import com.example.tolonginapp.tolongin.section.register.RegisterActivity
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LOGGED
+import com.example.tolonginapp.tolongin.utils.setEnable
+import com.example.tolonginapp.tolongin.utils.showSnackBar
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
@@ -23,9 +28,13 @@ import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity(), LoginContract.View {
+
+
     @Inject
     lateinit var presenter: LoginPresenter
 
+    @Inject
+    lateinit var sharedPreferenceHelper: SharedPreferenceHelper
 
     override fun onSetupLayout() {
         setContentView(R.layout.activity_login)
@@ -39,7 +48,11 @@ class LoginActivity : BaseActivity(), LoginContract.View {
             presenter.loginPresenter(LoginRequest(et_email.text.toString(), et_password.text.toString()))
         }
         setClickRegister()
-
+        when{
+            sharedPreferenceHelper.getBoolean(LOGGED) ->{
+                goToMainActivity()
+            }
+        }
         presenter.setValidation(
             Observable.combineLatest(
                 RxTextView.textChanges(et_email).map {
@@ -55,8 +68,18 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun goToMain(loginResponse: LoginResponse) {
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-        finishAffinity()
+        loginResponse.datapengguna?.idRole?.let {
+            when (it) {
+                3 -> {
+                    sharedPreferenceHelper.setBoolean(LOGGED,true)
+                    goToMainActivity()
+                    finishAffinity()
+                }
+                else -> {
+                    loginResponse.message?.let { showSnackBar(btn_login, getString(R.string.status_salah)) }
+                }
+            }
+        }
     }
 
     override fun onBackPressed() {
@@ -65,22 +88,12 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun getValidation(boolean: Boolean) {
-        with(btn_login) {
-            isEnabled = boolean
-            when {
-                boolean -> {
-                    btn_login.setBackgroundResource(R.drawable.rounded_button)
-                }
-                else -> {
-                    btn_login.setBackgroundResource(R.drawable.rounded_button_disable)
-                }
-            }
-        }
+        btn_login.setEnable(boolean)
     }
 
-    private fun setClickRegister(){
+    private fun setClickRegister() {
         val str2 = getString(R.string.txt_sign_up)
-        val str = getString(R.string.txt_don_t_have_an_account_sign_up,str2)
+        val str = getString(R.string.txt_don_t_have_an_account_sign_up, str2)
         val start = str.indexOf(str2)
         val end = start + str2.length
 
@@ -100,15 +113,24 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
         }
         spanBuilder.setSpan(clickSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        with(tv_sign_up){
+        with(tv_sign_up) {
             text = spanBuilder
             highlightColor = Color.TRANSPARENT
             movementMethod = LinkMovementMethod.getInstance()
             setOnClickListener {
-                startActivity(Intent(this@LoginActivity,RegisterActivity::class.java))
+                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             }
 
         }
 
+    }
+
+    override fun showError(error: Any) {
+        Log.d("DHIKA", "OYY: $error");
+        showSnackBar(btn_login, error.toString())
+    }
+
+    private fun goToMainActivity(){
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
     }
 }

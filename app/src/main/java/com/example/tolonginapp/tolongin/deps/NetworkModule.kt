@@ -27,6 +27,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun providesGson() = GsonBuilder()
+        .setLenient()
         .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
         .create()
 

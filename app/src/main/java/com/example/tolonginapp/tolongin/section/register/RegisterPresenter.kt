@@ -14,12 +14,15 @@ class RegisterPresenter @Inject constructor(val networkManager: NetworkManager) 
     override fun registerPresenter(request: RegisterRequest) {
         compositeDisposable.add(networkManager.doRegisterMobile(request, {
             when {
-                it.success ?: false -> {
+                it.success == true -> {
                     view?.goToMain(it)
+                }
+                it.success == false ->{
+                    it.message?.let { it1 -> view?.showError(it1) }
                 }
             }
         }, {
-
+            it.message?.let { it1 -> view?.showError(it1) }
         }))
     }
 

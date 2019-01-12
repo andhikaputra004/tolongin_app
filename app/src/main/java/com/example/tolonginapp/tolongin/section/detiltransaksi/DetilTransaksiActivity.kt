@@ -13,11 +13,15 @@ import com.example.tolonginapp.tolongin.base.BaseActivity
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.model.TransaksiRequest
 import com.example.tolonginapp.tolongin.model.TransaksiResponse
+import com.example.tolonginapp.tolongin.utils.Constant
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.REK
+import com.example.tolonginapp.tolongin.utils.setCurrency
 import kotlinx.android.synthetic.main.activity_detil_transaksi.*
 import java.io.File
+import java.text.NumberFormat
+import java.util.*
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -30,6 +34,7 @@ class DetilTransaksiActivity : BaseActivity(), DetilTransaksiContract.View {
 
     @Inject
     lateinit var sharedPreferenceHelper: SharedPreferenceHelper
+
     override fun onSetupLayout() {
         setContentView(R.layout.activity_detil_transaksi)
         setupToolbarTitle(toolbar as Toolbar , R.string.txt_detail_transaksi,R.drawable.ic_arrow_back_white_24dp)
@@ -40,7 +45,7 @@ class DetilTransaksiActivity : BaseActivity(), DetilTransaksiContract.View {
         lifecycle.addObserver(presenter)
         val bundle = intent.extras
         val getNumberR = getNumber()
-        tv_tranfer_content.text = "${bundle.getString("nominal").toInt() + getNumberR}"
+        tv_tranfer_content.text = setCurrency(bundle.getString("nominal").toDouble() + getNumberR)
         tv_no_rek.text = sharedPreferenceHelper.getString(REK)
         btn_getimage.setOnClickListener {
             getImage()
@@ -85,7 +90,7 @@ class DetilTransaksiActivity : BaseActivity(), DetilTransaksiContract.View {
     }
     private fun getNumber() : Int{
         val random = Random
-        val number = random.nextInt(100)
+        val number = random.nextInt(999)
 
         return number
     }

@@ -19,7 +19,7 @@ data class Datapengguna(
     @SerializedName("id_pengguna")
     val idPengguna: String,
     @SerializedName("id_role")
-    val idRole: String,
+    var idRole: Int,
     @SerializedName("nama")
     val nama: String,
     @SerializedName("password")

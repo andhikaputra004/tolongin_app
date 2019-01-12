@@ -1,6 +1,7 @@
 package com.example.tolonginapp.tolongin.section.historyfragment
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.example.tolonginapp.tolongin.model.HistoryRequest
 import com.example.tolonginapp.tolongin.model.HistoryResponse
 import com.example.tolonginapp.tolongin.model.ListHistory
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
+import com.example.tolonginapp.tolongin.utils.changeDateFormat
+import com.example.tolonginapp.tolongin.utils.setCurrency
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_history.*
 import kotlinx.android.synthetic.main.viewholder_history.view.*
@@ -31,8 +34,19 @@ class HistoryFragment : DaggerFragment() , HistoryContract.View {
             _,_,_->
         },{
             model,view ->
-            view.tv_bencana.text = model.judulBencana
-            view.tv_rp.text = model.nominal
+            when{
+                model.status == 0-> {
+                    view.tv_bencana.text = model.judulBencana
+                    activity?.let { ContextCompat.getColor(it,R.color.Red) }?.let { view.tv_bencana.setTextColor(it) }
+                    view.tv_donation.text = model.nominal?.toDouble()?.let { setCurrency(it) }
+                    view.tv_date.text = model.tanggalTransaksi?.changeDateFormat("yyyy-MM-dd HH:mm:ss","dd MMMM yyyy")
+                }
+                else ->{
+                    view.tv_bencana.text = model.judulBencana
+                    view.tv_donation.text = model.nominal?.toDouble()?.let { setCurrency(it) }
+                    view.tv_date.text = model.tanggalTransaksi?.changeDateFormat("yyyy-MM-dd HH:mm:ss","dd MMMM yyyy")
+                }
+            }
         })
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)=

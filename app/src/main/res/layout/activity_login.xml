@@ -10,8 +10,11 @@
     <android.support.design.widget.TextInputLayout
             android:layout_width="@dimen/dimen_0dp"
             android:id="@+id/til_email"
+            app:hintTextAppearance="@style/TextLabel"
+            android:textColorHint="@color/colorPrimary"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_24dp"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_marginRight="@dimen/dimen_24dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -19,7 +22,9 @@
             app:layout_constraintBottom_toBottomOf="parent">
         <EditText android:layout_width="match_parent"
                   android:id="@+id/et_email"
+                  android:textColorHint="@color/colorPrimary"
                   android:inputType="textEmailAddress"
+                  android:backgroundTint="@color/colorPrimary"
                   android:layout_height="wrap_content"
                   android:hint="@string/txt_email"/>
     </android.support.design.widget.TextInputLayout>
@@ -33,12 +38,16 @@
             android:layout_marginRight="@dimen/dimen_24dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:passwordToggleEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
             app:layout_constraintTop_toBottomOf="@id/til_email"
             android:layout_marginTop="10dp"
+            app:passwordToggleTint="@color/colorPrimary"
             app:layout_constraintRight_toRightOf="parent">
         <EditText android:layout_width="match_parent"
                   android:id="@+id/et_password"
+                  android:textColorHint="@color/colorPrimary"
                   android:inputType="textPassword"
+                  android:backgroundTint="@color/colorPrimary"
                   android:layout_height="wrap_content"
                   android:hint="@string/txt_password"/>
     </android.support.design.widget.TextInputLayout>

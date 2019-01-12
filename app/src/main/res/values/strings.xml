@@ -39,4 +39,6 @@
     <string name="txt_detail_transaksi">Detail Transaksi</string>
     <string name="txt_don_t_have_an_account_sign_up">Don\'t have an account? %1$s</string>
     <string name="txt_sign_up">Sign Up</string>
+    <string name="status_salah">Harus pengguna yang bisa masuk</string>
+    <string name="txt_log_out">Log Out</string>
 </resources>

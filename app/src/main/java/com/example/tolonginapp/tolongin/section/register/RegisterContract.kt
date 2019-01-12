@@ -10,6 +10,7 @@ interface RegisterContract {
     interface View : BaseViewInterface<Presenter> {
         fun goToMain(registerResponse: RegisterResponse)
         fun getValidation(boolean: Boolean)
+        fun showError(error : Any)
     }
 
     interface Presenter : BasePresenterInterface<View> {

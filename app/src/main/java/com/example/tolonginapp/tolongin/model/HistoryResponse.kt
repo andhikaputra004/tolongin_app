@@ -1,5 +1,7 @@
 package com.example.tolonginapp.tolongin.model
+
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 data class HistoryResponse(
@@ -21,5 +23,9 @@ data class ListHistory(
     @SerializedName("judul_bencana")
     val judulBencana: String?,
     @SerializedName("nominal")
-    val nominal: String?
+    val nominal: String?,
+    @SerializedName("tanggal_transaksi")
+    val tanggalTransaksi: String?,
+    @SerializedName("status")
+    val status: Int?
 )
