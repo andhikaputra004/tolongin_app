@@ -8,6 +8,6 @@ data class RegisterRequest(
     val nama: String?,
     @SerializedName("password")
     val password: String?,
-    @SerializedName("telephone")
+    @SerializedName("nomor_telephone")
     val telephone: String?
 )

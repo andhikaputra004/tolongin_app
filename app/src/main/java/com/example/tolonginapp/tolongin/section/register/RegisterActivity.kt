@@ -12,6 +12,7 @@ import com.example.tolonginapp.tolongin.utils.showSnackBar
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function4
 import kotlinx.android.synthetic.main.activity_register.*
 import javax.inject.Inject
 
@@ -32,15 +33,20 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
         lifecycle.addObserver(presenter)
 
         presenter.setValidation(
-            Observable.combineLatest(
+            Observable.combineLatest(RxTextView.textChanges(et_email).map {
+                    it.isNotEmpty()
+                },
                 RxTextView.textChanges(et_nama).map {
                     it.isNotEmpty()
                 },
                 RxTextView.textChanges(et_telp).map {
                     it.isNotEmpty() && it.length > 11
                 },
-                BiFunction { nama, telp ->
-                    nama && telp
+                RxTextView.textChanges(et_password).map {
+                    it.isNotEmpty() && it.length > 6
+                },
+                Function4 { t1, t2, t3, t4  ->
+                    t1 && t2 && t3 && t4
                 }
             )
         )

@@ -17,7 +17,6 @@ import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.CO
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.EMPTY_STRING
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LANGUANGE
 import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
 import java.io.ByteArrayOutputStream
 import java.text.NumberFormat
@@ -78,6 +77,7 @@ fun Button.setEnable(boolean: Boolean) {
         isEnabled = boolean
         when {
             boolean -> {
+                this.setTextColor(ContextCompat.getColor(context,R.color.white))
                 this.setBackgroundResource(R.drawable.rounded_button)
             }
             else -> {
