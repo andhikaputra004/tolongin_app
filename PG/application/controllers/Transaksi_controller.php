@@ -15,7 +15,8 @@ class Transaksi_controller extends CI_Controller {
 
         $response=array(
             'success'=>true,
-            'message'=>'transaksi berhasil'
+            'message'=>'transaksi berhasil',
+            'getTrans' => $this->Transaksi_model->getTransaksi($dataDonatur)
           );
         
     $this->output
@@ -48,4 +49,34 @@ class Transaksi_controller extends CI_Controller {
         ->_display();
         exit;
     }
+
+    public function updateTransaksi()
+    {
+
+
+    $DataTransaksi = json_decode(file_get_contents('php://input'),true);
+    $encodedImage=$DataTransaksi['encoded_image'];
+    unset($DataTransaksi['encoded_image']);
+  
+    $foto=base64_decode($encodedImage);
+    $this->Transaksi_model->UpdateTransaksi($DataTransaksi);
+
+      $response=array(
+        'status' => true,
+        'message'=> "Sukses"
+      );
+
+      $fp = fopen($_SERVER['DOCUMENT_ROOT'].'/PG/images/Bukti/'.$DataTransaksi['bukti_pembayaran'].'', 'w');
+      fwrite($fp, $foto);
+  
+  
+      $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json', 'utf-8')
+      ->set_output(json_encode($response, JSON_PRETTY_PRINT))
+      ->_display();
+      exit;
+      // echo $foto;
+    }
+  
 }

@@ -105,9 +105,10 @@ class Mobilelogin_model extends CI_Model {
 
   
   public function insertPengguna($input)
-  {    
-    echo $input;
-   // $this->db->insert('tbl_pengguna',$input);
+  {      
+    $this->db->set('status','1');
+    $this->db->set('id_role','3');
+    $this->db->insert('tbl_pengguna',$input);
   }
 
   // public function getIdDonatur()

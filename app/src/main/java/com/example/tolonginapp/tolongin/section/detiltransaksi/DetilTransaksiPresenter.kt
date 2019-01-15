@@ -13,10 +13,8 @@ class DetilTransaksiPresenter @Inject constructor(val networkManager: NetworkMan
 
     override fun doTransaksi(request: TransaksiRequest) {
         compositeDisposable.addAll(networkManager.doTransaksi(request,{
-            Log.d("DHIKA", "MASUKBOSKU: ");
             when{
                 it.success ?: true -> {
-                    Log.d("DHIKA", "LEBIH MASUK: ");
                     view?.goToMain(it)
                 }
             }

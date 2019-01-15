@@ -98,3 +98,5 @@ $route['List_bencana']['GET'] = 'BencanaMobile_Controller/GetListBencana';
 $route['IDList_bencana']['POST'] = 'BencanaMobile_Controller/GetBencanaId';
 
 $route['getHistory']['POST'] = 'Transaksi_controller/getHistory';
+
+$route['transaksi/update']['POST']='transaksi_controller/updateTransaksi';

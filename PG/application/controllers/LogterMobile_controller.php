@@ -19,7 +19,7 @@ class LogterMobile_controller extends CI_Controller {
         $response=array(
             'success'=>false,
             'message'=>'Email/katasandi salah',
-            'anu'=>$password 
+            // 'anu'=>$password 
           );
     }
     else {
@@ -42,26 +42,26 @@ class LogterMobile_controller extends CI_Controller {
   public function RegisterDonatur()
   {
     $input = json_decode(file_get_contents('php://input'),true);
-    // if($this->Mobilelogin_model->cekEmail($input['email']))
-    // {
+    if($this->Mobilelogin_model->cekEmail($input))
+    {
       $this->Mobilelogin_model->insertPengguna($input);
 
-    //   $response=array(
-    //     'success'=>true,
-    //     'message'=>'registrasi berhasil'
-    //   );
-    // // }
-    // // else {
-    //   // $response=array(
-    //     // 'success'=>false,
-    //     // 'message'=>'id pengguna sudah terdaftar'
-    //   // );
-    // // }
+      $response=array(
+        'success'=>true,
+        'message'=>'registrasi berhasil'
+      );
+    }
+    else {
+      $response=array(
+        'success'=>false,
+        'message'=>'Email sudah terdaftar'
+      );
+    }
 
     $this->output
     ->set_status_header(200)
     ->set_content_type('application/json', 'utf-8')
-    ->set_output(json_encode($input, JSON_PRETTY_PRINT))
+    ->set_output(json_encode($response, JSON_PRETTY_PRINT))
     ->_display();
     exit;
   }

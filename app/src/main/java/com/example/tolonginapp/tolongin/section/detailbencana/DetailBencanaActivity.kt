@@ -6,14 +6,17 @@ import com.bumptech.glide.Glide
 import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.base.BaseActivity
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
+import com.example.tolonginapp.tolongin.section.detailTransaksi.DetailTransActivity
 import com.example.tolonginapp.tolongin.section.transaksi.TransaksiActivity
 import com.example.tolonginapp.tolongin.utils.Constant
 import com.example.tolonginapp.tolongin.utils.Constant.BaseUrl.Companion.BASE_URL
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_BENCANA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_TRANSAKSI
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.REK
 import com.example.tolonginapp.tolongin.utils.setCurrency
+import com.jakewharton.rxbinding2.widget.RxRadioGroup
 import kotlinx.android.synthetic.main.activity_detail_bencana.*
 import java.text.NumberFormat
 import java.util.*
@@ -32,17 +35,23 @@ class DetailBencanaActivity : BaseActivity() {
     }
 
     override fun onViewReady() {
+        when{
+            sharedPreferenceHelper.getString(ID_TRANSAKSI) != "" ->{
+                startActivity(Intent(this@DetailBencanaActivity,DetailTransActivity::class.java))
+                finish()
+            }
+        }
         val bundle = intent.extras
         Glide.with(this).load("${BASE_URL}images/Bencana/${bundle.getString("IMAGE_HOLDER")}")
             .into(iv_thumbnail)
         tv_bencana.text = bundle.getString("BENCANA")
         tv_donation_money.text = setCurrency(bundle.getDouble("DONASI"))
         tv_descripsion.text = bundle.getString("DESCRIPTION")
-
         btn_transaksi.setOnClickListener {
             sharedPreferenceHelper.setString(BENCANA,bundle.getString(ID_BENCANA))
             sharedPreferenceHelper.setString(REK,bundle.getString(NOMOR_REK))
             startActivity(Intent(this@DetailBencanaActivity, TransaksiActivity::class.java))
         }
+
     }
 }

@@ -2,11 +2,15 @@ package com.example.tolonginapp.tolongin.utils
 
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
+import android.util.Base64
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.COUNTRY
@@ -15,8 +19,10 @@ import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LA
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
+import java.io.ByteArrayOutputStream
 import java.text.NumberFormat
 import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
 
 fun Context.buildAlertDialog(
@@ -101,4 +107,14 @@ fun String.changeDateFormat(oldPattern: String, newPattern: String): String {
         e.printStackTrace()
     }
     return res
+}
+
+fun getTimeStamp(): String {
+    return SimpleDateFormat("yyyyMMdd_Hmmss", Locale.getDefault()).format(Date())
+}
+
+fun ImageView.encodeBase64(): String {
+    val byteArrayOutputStream = ByteArrayOutputStream()
+    (this.drawable as BitmapDrawable).bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream)
+    return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
 }

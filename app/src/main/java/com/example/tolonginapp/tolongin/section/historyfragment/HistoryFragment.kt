@@ -1,5 +1,6 @@
 package com.example.tolonginapp.tolongin.section.historyfragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
@@ -12,6 +13,7 @@ import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.model.HistoryRequest
 import com.example.tolonginapp.tolongin.model.HistoryResponse
 import com.example.tolonginapp.tolongin.model.ListHistory
+import com.example.tolonginapp.tolongin.section.detailTransaksi.DetailTransActivity
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.changeDateFormat
 import com.example.tolonginapp.tolongin.utils.setCurrency
@@ -32,6 +34,7 @@ class HistoryFragment : DaggerFragment() , HistoryContract.View {
     private val historyAdapter by lazy {
         GeneralRecyclerViewAdapter(R.layout.viewholder_history,listHistory,{
             _,_,_->
+            startActivity(Intent(activity,DetailTransActivity::class.java))
         },{
             model,view ->
             when{

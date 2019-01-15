@@ -25,4 +25,7 @@ interface NetworkService {
 
     @POST("do_transaksi")
     fun doTransaksi(@Body request: TransaksiRequest) : Observable<TransaksiResponse>
+
+    @POST("transaksi/update")
+    fun doUpdateTransaksi(@Body request: UpdateTransRequest) : Observable<UpdateTransResponse>
 }

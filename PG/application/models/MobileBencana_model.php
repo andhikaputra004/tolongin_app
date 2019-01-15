@@ -25,6 +25,7 @@ class MobileBencana_model extends CI_Model
     $this->db->from('tbl_bencana a');
     $this->db->join('tbl_transaksi b','a.id_bencana = b.id_bencana','left');
     $this->db->join('tbl_penggalangdana c','a.id_penggalangdana = c.id_penggalangdana');
+    $this->db->where('b.status',1);
     $this->db->group_by('id_bencana');
     $DataBencana = $this->db->get('')->result_array();
     return $DataBencana;

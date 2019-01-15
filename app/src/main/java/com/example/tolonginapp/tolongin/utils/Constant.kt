@@ -21,6 +21,11 @@ class Constant{
             const val REK = "REK"
             const val LANGUANGE = "in"
             const val COUNTRY = "ID"
+            const val STATUS = "Status"
+            const val NOMINAL = "NOMINAL"
+            const val ID_TRANSAKSI = "ID_TRANSAKSI"
+            const val BANK = "BANK"
+
         }
     }
 }

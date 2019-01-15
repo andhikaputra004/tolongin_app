@@ -1,10 +1,14 @@
 package com.example.tolonginapp.tolongin.deps
 
 import android.content.SharedPreferences
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BANK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.EMAIL_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_TRANSAKSI
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LOGGED
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMINAL
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
 
 class SharedPreferenceHelper(val sharedPreference: SharedPreferences){
     fun setBoolean(key: String, value: Boolean) {
@@ -36,6 +40,13 @@ class SharedPreferenceHelper(val sharedPreference: SharedPreferences){
         setString(NAMA_PENGGUNA, "")
         setString(EMAIL_PENGGUNA,"")
         setBoolean(LOGGED,false)
+    }
+
+    fun removeTransaksi(){
+        setString(ID_TRANSAKSI,"")
+        setString(NOMINAL,"")
+        setString(NOMOR_REK,"")
+        setString(BANK,"")
     }
 
 }

@@ -44,4 +44,10 @@ class NetworkManager(val networkService: NetworkService){
                      onError: (Throwable) -> Unit) = networkService
         .doTransaksi(request)
         .uisubscribe(onNext, onError)
+
+    fun doUpdateTransaksi(request: UpdateTransRequest,
+                    onNext: (UpdateTransResponse) -> Unit,
+                    onError: (Throwable) -> Unit) = networkService
+        .doUpdateTransaksi(request)
+        .uisubscribe(onNext, onError)
 }

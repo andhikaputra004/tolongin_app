@@ -89,6 +89,7 @@
                         android:layout_marginLeft="@dimen/dimen_24dp"
                         android:layout_marginRight="@dimen/dimen_24dp"
                         android:layout_marginTop="@dimen/dimen_10dp"
+                        android:id="@+id/rbgroup"
                         android:layout_marginBottom="@dimen/dimen_10dp"
                         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -263,8 +264,8 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     android:text="@string/txt_donasi"
+                    android:background="@drawable/rounded_button"
                     android:id="@+id/btn_donasi"
-                    android:background="@color/pink"
                     android:textColor="@color/white"
                     android:textAllCaps="false"/>
         </android.support.constraint.ConstraintLayout>

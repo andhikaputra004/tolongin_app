@@ -41,4 +41,6 @@
     <string name="txt_sign_up">Sign Up</string>
     <string name="status_salah">Harus pengguna yang bisa masuk</string>
     <string name="txt_log_out">Log Out</string>
+    <string name="txt_terbayar">Terbayar</string>
+    <string name="detil_history">Detail History</string>
 </resources>
