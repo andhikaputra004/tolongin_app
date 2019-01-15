@@ -9,6 +9,7 @@ import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LO
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMINAL
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.STATUS
 
 class SharedPreferenceHelper(val sharedPreference: SharedPreferences){
     fun setBoolean(key: String, value: Boolean) {
@@ -47,6 +48,8 @@ class SharedPreferenceHelper(val sharedPreference: SharedPreferences){
         setString(NOMINAL,"")
         setString(NOMOR_REK,"")
         setString(BANK,"")
+        setInt(STATUS,0)
+
     }
 
 }

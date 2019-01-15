@@ -46,7 +46,7 @@ class TransaksiActivity : BaseActivity(), TransaksiContract.View {
                 rb_bank_bri.isChecked = false
                 rb_bank_cimb.isChecked = false
                 rb_bank_bca.isChecked = false
-                str = "Mandiri"
+                str = "MANDIRI"
             }
         }
 

@@ -44,4 +44,6 @@
     <string name="txt_terbayar">Terbayar</string>
     <string name="detil_history">Detail History</string>
     <string name="txt_bayar">Bayar</string>
+    <string name="txt_lunas">Lunas</string>
+    <string name="txt_belum_terverivikasi">Belum Terverivikasi</string>
 </resources>

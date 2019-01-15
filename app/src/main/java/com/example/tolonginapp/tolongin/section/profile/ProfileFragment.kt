@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.section.gantipassword.ChangePasswordActivity
+import com.example.tolonginapp.tolongin.section.login.LoginActivity
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.EMAIL_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LOGGED
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGUNA
@@ -32,6 +33,7 @@ class ProfileFragment : DaggerFragment() {
         }
         btn_logout.setOnClickListener {
             sharedPreferenceHelper.removeSession()
+            startActivity(Intent(activity,LoginActivity::class.java))
             activity?.finish()
         }
     }

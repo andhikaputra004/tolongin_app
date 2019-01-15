@@ -27,5 +27,11 @@ data class ListHistory(
     @SerializedName("tanggal_transaksi")
     val tanggalTransaksi: String?,
     @SerializedName("status")
-    val status: Int?
+    val status: Int?,
+    @SerializedName("nomer_rekening")
+    val nomerRek: String?,
+    @SerializedName("nama_penggalangdana")
+    val namaPenggalangdana: String?,
+    @SerializedName("nama_bank")
+    val namaBank: String?
 )

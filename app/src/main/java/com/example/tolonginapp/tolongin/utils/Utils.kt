@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -19,6 +20,8 @@ import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LA
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import java.io.ByteArrayOutputStream
+import java.io.FileInputStream
+import java.io.IOException
 import java.text.NumberFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -115,6 +118,28 @@ fun getTimeStamp(): String {
 
 fun ImageView.encodeBase64(): String {
     val byteArrayOutputStream = ByteArrayOutputStream()
-    (this.drawable as BitmapDrawable).bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream)
+    (this.drawable as BitmapDrawable).bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream)
     return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
+}
+
+fun encodeTobase64(image: Bitmap): String? {
+
+    var baos = ByteArrayOutputStream()
+    image.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+    var b = baos.toByteArray()
+    var temp: String? = null
+    try {
+        System.gc()
+        temp = Base64.encodeToString(b, Base64.DEFAULT)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    } catch (e: OutOfMemoryError) {
+        baos = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.JPEG, 50, baos)
+        b = baos.toByteArray()
+        temp = Base64.encodeToString(b, Base64.DEFAULT)
+        Log.e("EWN", "Out of memory error catched")
+    }
+
+    return temp
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.example.tolonginapp.tolongin.MainActivity
 import com.example.tolonginapp.tolongin.section.detailTransaksi.DetailTransActivity
 import com.example.tolonginapp.tolongin.section.detailbencana.DetailBencanaActivity
+import com.example.tolonginapp.tolongin.section.detilhistory.DetailHistoryActivity
 import com.example.tolonginapp.tolongin.section.detiltransaksi.DetilTransaksiActivity
 import com.example.tolonginapp.tolongin.section.gantipassword.ChangePasswordActivity
 import com.example.tolonginapp.tolongin.section.login.LoginActivity
@@ -52,5 +53,9 @@ abstract class ActivityBuilder {
     @ActivityScoped
     @ContributesAndroidInjector
     abstract fun bindDetailTransActivity(): DetailTransActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun bindDetailHistoryActivity(): DetailHistoryActivity
 
 }
