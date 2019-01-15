@@ -19,13 +19,16 @@ class Transaksi_model extends CI_Model
     function getHistory($dataTransaksi){
         
         $DataBencana =[];
-        $this->db->select('a.id_transaksi,a.id_pengguna,a.id_bencana,a.nominal,b.judul_bencana,b.deskripsi_bencana,a.tanggal_transaksi,a.status');
+        $this->db->select('a.id_transaksi,a.id_pengguna,a.id_bencana,a.nominal,b.judul_bencana,b.deskripsi_bencana,a.tanggal_transaksi,a.status,c.nomer_rekening,c.nama_penggalangdana,c.nama_bank');
         $this->db->from('tbl_transaksi a');
         $this->db->join('tbl_bencana b','a.id_bencana = b.id_bencana');
+        $this->db->join('tbl_penggalangdana c','b.id_penggalangdana = c.id_penggalangdana');
         $this->db->where('id_pengguna',$dataTransaksi['id_pengguna']);
         $DataBencana = $this->db->get('')->result_array();
         return $DataBencana;    
     }
+
+    
 
     function getTransaksi($dataTransaksi){
         
@@ -53,6 +56,4 @@ class Transaksi_model extends CI_Model
       return false;
     }
   }
-
-
 }

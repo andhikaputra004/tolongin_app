@@ -66,17 +66,19 @@ class Transaksi_controller extends CI_Controller {
         'message'=> "Sukses"
       );
 
-      $fp = fopen($_SERVER['DOCUMENT_ROOT'].'/PG/images/Bukti/'.$DataTransaksi['bukti_pembayaran'].'', 'w');
-      fwrite($fp, $foto);
-  
-  
+    // //   $fp = fopen($_SERVER['DOCUMENT_ROOT'].'/PG/images/Bukti/'.$DataTransaksi['bukti_pembayaran'].'', 'wb');
+    // //   fwrite($fp, $foto);
+    // //   fclose($fp);
+      
+    //     // file_put_contents(APPPATH .$_SERVER['DOCUMENT_ROOT'].'/PG/images/Bukti/'.$DataTransaksi['bukti_pembayaran'].'', 'w');
+    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/PG/images/BUKTI/'.$DataTransaksi['bukti_pembayaran'].'.jpg',$encodedImage);
+    // echo $foto;
       $this->output
       ->set_status_header(200)
       ->set_content_type('application/json', 'utf-8')
       ->set_output(json_encode($response, JSON_PRETTY_PRINT))
       ->_display();
       exit;
-      // echo $foto;
     }
   
 }
