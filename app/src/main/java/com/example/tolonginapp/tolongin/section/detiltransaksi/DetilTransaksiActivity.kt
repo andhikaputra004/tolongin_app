@@ -1,6 +1,8 @@
 package com.example.tolonginapp.tolongin.section.detiltransaksi
 
 import android.content.Intent
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.Toolbar
 import com.example.tolonginapp.tolongin.R
 import com.example.tolonginapp.tolongin.base.BaseActivity
@@ -8,9 +10,11 @@ import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.model.TransaksiRequest
 import com.example.tolonginapp.tolongin.model.TransaksiResponse
 import com.example.tolonginapp.tolongin.section.detailTransaksi.DetailTransActivity
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BANK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_PENGGUNA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_TRANSAKSI
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGALANG
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMINAL
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.REK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.STATUS
@@ -39,15 +43,16 @@ class DetilTransaksiActivity : BaseActivity(), DetilTransaksiContract.View {
         lifecycle.addObserver(presenter)
         val bundle = intent.extras
         val getNumberR = getNumber()
-        tv_tranfer_content.text = setCurrency(bundle.getString("nominal").toDouble() + getNumberR)
-        tv_no_rek.text = sharedPreferenceHelper.getString(REK)
+        getBank(sharedPreferenceHelper.getString(BANK))
+        tv_nama_pengguna.text = sharedPreferenceHelper.getString(NAMA_PENGGALANG)
+        tv_tranfer_content.text = setCurrency(bundle.getString(NOMINAL).toDouble() + getNumberR)
         btn_transaksi.setOnClickListener {
             presenter.doTransaksi(
                 TransaksiRequest(
                     sharedPreferenceHelper.getString(BENCANA).toInt(),
                     sharedPreferenceHelper.getString(ID_PENGGUNA).toInt()
                     ,
-                    bundle.getString("nominal").toInt(),
+                    bundle.getString(NOMINAL).toInt(),
                     getNumberR
                 )
             )
@@ -69,6 +74,34 @@ class DetilTransaksiActivity : BaseActivity(), DetilTransaksiContract.View {
         val number = random.nextInt(999)
 
         return number
+    }
+
+    private fun getBank(bank : String){
+        when{
+            bank.equals("MANDIRI") -> {
+                iv_bank.setImageResource(R.drawable.ic_mandiri)
+                tv_no_rek.text = "(008) ${sharedPreferenceHelper.getString(REK)}"
+            }
+            bank.equals("BCA") -> {
+                iv_bank.setImageResource(R.drawable.ic_bca)
+                tv_no_rek.text = "(014) ${sharedPreferenceHelper.getString(REK)}"
+            }
+            bank.equals("BNI") -> {
+                iv_bank.setImageResource(R.drawable.ic_bni)
+                tv_no_rek.text = "(009) ${sharedPreferenceHelper.getString(REK)}"
+            }
+            bank.equals("BRI") -> {
+                iv_bank.setImageResource(R.drawable.ic_bri)
+                tv_no_rek.text = "(002) ${sharedPreferenceHelper.getString(REK)}"
+
+            }
+            bank.equals("CIMB") -> {
+                iv_bank.setImageResource(R.drawable.ic_cimb)
+                tv_no_rek.text = "(022) ${sharedPreferenceHelper.getString(REK)}"
+
+            }
+
+        }
     }
 
 }

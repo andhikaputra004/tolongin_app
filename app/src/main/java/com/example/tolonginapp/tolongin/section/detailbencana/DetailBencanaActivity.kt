@@ -13,6 +13,8 @@ import com.example.tolonginapp.tolongin.utils.Constant.BaseUrl.Companion.BASE_UR
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_TRANSAKSI
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGALANG
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.REK
 import com.example.tolonginapp.tolongin.utils.setCurrency
@@ -50,6 +52,7 @@ class DetailBencanaActivity : BaseActivity() {
         btn_transaksi.setOnClickListener {
             sharedPreferenceHelper.setString(BENCANA,bundle.getString(ID_BENCANA))
             sharedPreferenceHelper.setString(REK,bundle.getString(NOMOR_REK))
+            sharedPreferenceHelper.setString(NAMA_PENGGALANG,bundle.getString(NAMA))
             startActivity(Intent(this@DetailBencanaActivity, TransaksiActivity::class.java))
         }
 

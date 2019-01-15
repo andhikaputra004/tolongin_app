@@ -25,6 +25,8 @@ class Constant{
             const val NOMINAL = "NOMINAL"
             const val ID_TRANSAKSI = "ID_TRANSAKSI"
             const val BANK = "BANK"
+            const val NAMA = "NAMA"
+            const val NAMA_PENGGALANG = "NAMA_PENGGALANG"
 
         }
     }

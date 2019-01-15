@@ -18,6 +18,7 @@ import com.example.tolonginapp.tolongin.utils.Constant.BaseUrl.Companion.BASE_UR
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.COUNTRY
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_BENCANA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.LANGUANGE
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NOMOR_REK
 import com.example.tolonginapp.tolongin.utils.setCurrency
 import dagger.android.support.DaggerFragment
@@ -43,6 +44,7 @@ class HomeFragment : DaggerFragment(), HomeContract.View {
                 putString(ID_BENCANA,model.idBencana)
                 putString("DESCRIPTION",model.deskripsiBencana)
                 putString(NOMOR_REK,model.nomerRekening)
+                putString(NAMA,model.namaPenggalangdana)
             }
             startActivity(Intent(activity, DetailBencanaActivity::class.java).apply {
                 putExtras(bundle)

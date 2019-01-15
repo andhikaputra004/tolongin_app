@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.View
 import com.example.tolonginapp.tolongin.MainActivity
 import com.example.tolonginapp.tolongin.R
@@ -13,7 +12,10 @@ import com.example.tolonginapp.tolongin.base.BaseActivity
 import com.example.tolonginapp.tolongin.deps.SharedPreferenceHelper
 import com.example.tolonginapp.tolongin.model.UpdateTransRequest
 import com.example.tolonginapp.tolongin.model.UpdateTransResponse
+import com.example.tolonginapp.tolongin.utils.Constant
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.BANK
 import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.ID_TRANSAKSI
+import com.example.tolonginapp.tolongin.utils.Constant.CommonString.Companion.NAMA_PENGGALANG
 import com.example.tolonginapp.tolongin.utils.encodeBase64
 import com.example.tolonginapp.tolongin.utils.getTimeStamp
 import com.example.tolonginapp.tolongin.utils.showSnackBar
@@ -40,16 +42,23 @@ class DetailTransActivity : BaseActivity(), DetailTransContract.View {
         presenter.takeView(this)
         lifecycle.addObserver(presenter)
 
-        when {
-            sharedPreferenceHelper.getString(ID_TRANSAKSI) != "" -> {
-                btn_status.visibility = View.VISIBLE
-                txt_transaksi.visibility = View.GONE
-            }
-        }
+        getBank(sharedPreferenceHelper.getString(BANK))
+
+        tv_nama_pengguna.text = sharedPreferenceHelper.getString(NAMA_PENGGALANG)
         btn_getimage.setOnClickListener {
             getImage()
         }
 
+        when {
+            sharedPreferenceHelper.getString(NAMA_PENGGALANG) != "" -> {
+                btn_status.visibility = View.VISIBLE
+                txt_transaksi.visibility = View.GONE
+            }
+            else -> {
+                btn_status.visibility = View.GONE
+                txt_transaksi.visibility = View.VISIBLE
+            }
+        }
         btn_status.setOnClickListener {
             when {
                 iv_image.drawable == null -> {
@@ -99,8 +108,35 @@ class DetailTransActivity : BaseActivity(), DetailTransContract.View {
     }
 
     override fun updateTrans(response: UpdateTransResponse) {
-        startActivity(Intent(this@DetailTransActivity,MainActivity::class.java))
+        startActivity(Intent(this@DetailTransActivity, MainActivity::class.java))
     }
 
+    private fun getBank(bank: String) {
+        when {
+            bank.equals("MANDIRI") -> {
+                iv_bank.setImageResource(R.drawable.ic_mandiri)
+                tv_no_rek.text = "(008) ${sharedPreferenceHelper.getString(Constant.CommonString.REK)}"
+            }
+            bank.equals("BCA") -> {
+                iv_bank.setImageResource(R.drawable.ic_bca)
+                tv_no_rek.text = "(014) ${sharedPreferenceHelper.getString(Constant.CommonString.REK)}"
+            }
+            bank.equals("BNI") -> {
+                iv_bank.setImageResource(R.drawable.ic_bni)
+                tv_no_rek.text = "(009) ${sharedPreferenceHelper.getString(Constant.CommonString.REK)}"
+            }
+            bank.equals("BRI") -> {
+                iv_bank.setImageResource(R.drawable.ic_bri)
+                tv_no_rek.text = "(002) ${sharedPreferenceHelper.getString(Constant.CommonString.REK)}"
+
+            }
+            bank.equals("CIMB") -> {
+                iv_bank.setImageResource(R.drawable.ic_cimb)
+                tv_no_rek.text = "(022) ${sharedPreferenceHelper.getString(Constant.CommonString.REK)}"
+
+            }
+
+        }
+    }
 
 }
